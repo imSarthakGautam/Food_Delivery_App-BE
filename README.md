@@ -6,3 +6,25 @@ jsonwebtoken
 cookie-parser
 bcrypt
 multer
+
+
+- UserModel 
+fullname,
+email,
+password
+contact 
+picture 
+
+cart []
+isAdmin
+orders
+
+product
+-Image
+-name
+-price
+-discount
+
+-bgcolor
+-panelColor
+-textColor
