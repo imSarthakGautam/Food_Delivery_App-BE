@@ -1,10 +1,7 @@
 //1. require mongoose
 const mongoose= require('mongoose');
 
-//2. connect mongoose
-mongoose.connect('mongodb://127.0.0.1:27017/foodDelivery')
-
-//3. schema creation
+//2. schema creation
 const productSchema= mongoose.Schema({
     image: String,
     name: String,
@@ -19,5 +16,5 @@ const productSchema= mongoose.Schema({
 
 });
 
-//4. export module
+//3. export module
 module.exports= mongoose.model('product', productSchema);
