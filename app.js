@@ -12,6 +12,9 @@ const productsRouter= require('./routes/productsRouter.js')
 const cookieParser= require('cookie-parser')
 const path= require('path')
 
+//loads environment variables from .env file to process.env 
+require('dotenv').config();
+
 //-------MIDDLEWARES---------
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))

@@ -1,13 +1,20 @@
 //1. require mongoose
 const mongoose= require('mongoose');
 
+//install config package
+const config= require('config')
+
+//debugger : npm i debug
+const debuger = require('debug')('development:mongoose');
+
+
 //2. connect mongoose
-mongoose.connect('mongodb://127.0.0.1:27017/foodDelivery')
+mongoose.connect(`${config.get("MONGODB_URI")}/foodDelivery`)
 .then(()=>{
-    console.log('connected')
+    debuger('connected')
 })
 .catch((err)=>{
-    console.log('error:'+ err);
+    debuger('error:'+ err);
 })
 
 module.exports= mongoose.connection;
