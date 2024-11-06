@@ -30,7 +30,7 @@ router.get('/cart', isLoggedIn, async (req, res) => {
     res.render('cart', { cartItems, priceBreakdown });
 });
 
-router.get('/bill', isLoggedIn, async (req,res)=>{
+router.get('cart/bill', isLoggedIn, async (req,res)=>{
     let user = await userModel.findOne({ email: req.user.email }).populate('cart');
     let cartItems = user.cart.map(item => ({
         ...item.toObject(),
@@ -49,8 +49,6 @@ router.get('/order', isLoggedIn, async (req,res)=>{
     req.flash('success', 'Order Placed Successfully')
     res.redirect('shop')
 })
-
-
 
 router.get('/addtocart/:id', isLoggedIn, async (req,res)=>{
     //console.log(req.body)
