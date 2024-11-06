@@ -2,6 +2,8 @@
 
 This is the backend of a food delivery application built using Node.js, Express, and MongoDB. It provides features like user authentication, cart management, order processing, and an admin panel for shop owners to manage products.
 
+![Food Delivery App](./public/images/shop.png)
+
 ## Installation 
 
 To set up the backend for this food delivery app, follow these steps:
@@ -89,6 +91,35 @@ Remove-Item Env:DEBUG
 6. Install the ejs file after setting up view engine as ejs.
 
 
+
+## Usages
+
+### Creating a Product:
+You can create a new product by logging into the admin panel at `/owner/admin` and submitting the product details (name, price, discount, image, etc.).
+![creating a product](./public/images/create_new_product.png)
+
+### Adding Products to Cart:
+Users can browse products on the `/shop` page and add items to their cart by clicking "Add to Cart".
+![add to cart](./public/images/cart.png)
+
+### Placing an Order:
+Once the user is satisfied with their cart, they can proceed to checkout, where they can see the bill,print it if they like and place the order.
+Once the order is placed, cart will be empty
+![placing an order](./public/images/bill.png)
+
+
+### Login/Logout:
+Users can login or register via `/users/login` and `/users/register`. To logout, users can go to `/users/logout`.
+
+![Login Logout](./public/images/cart.png)
+
+### Admin Actions:
+Shop owners can manage their products, view orders, and create new products via the `/owner/products` and `/owner/admin` routes.
+![Admin Login](./public/images/admin_login.png)
+![Admin Login 2](./public/images/admin_outside_dev_env.png)
+Admin can be selected only in dev environment.
+
+
 ## Tech-Stack and Packages
 
 - **Node.js**: JavaScript runtime environment.
@@ -130,21 +161,3 @@ Remove-Item Env:DEBUG
 ### Admin Panel:
 - **GET** `/owner/admin`: Display the admin panel for managing products.
 
-## Usages
-
-### Creating a Product:
-You can create a new product by logging into the admin panel at `/owner/admin` and submitting the product details (name, price, discount, image, etc.).
-
-### Adding Products to Cart:
-Users can browse products on the `/shop` page and add items to their cart by clicking "Add to Cart".
-
-### Placing an Order:
-Once the user is satisfied with their cart, they can proceed to checkout, where they can see the bill and place the order.
-
-### Admin Actions:
-Shop owners can manage their products, view orders, and create new products via the `/owner/products` and `/owner/admin` routes.
-
-### Login/Logout:
-Users can login or register via `/users/login` and `/users/register`. To logout, users can go to `/users/logout`.
-
-## Models:
