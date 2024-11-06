@@ -94,6 +94,20 @@ Remove-Item Env:DEBUG
 
 ## Usages
 
+
+### Login/Logout:
+Users can login or register via `/users/login` and `/users/register`. To logout, users can go to `/users/logout`.
+
+![Login Logout](./public/images/create_account.png)
+
+### Admin Actions:
+Shop owners can manage their products, view orders, and create new products via the `/owner/products` and `/owner/admin` routes.
+![Admin Login](./public/images/admin_login.png)
+![Admin Login 2](./public/images/admin_outside_dev_env.png)
+
+Admin can be selected only in dev environment.
+
+
 ### Creating a Product:
 You can create a new product by logging into the admin panel at `/owner/admin` and submitting the product details (name, price, discount, image, etc.).
 ![creating a product](./public/images/create_new_product.png)
@@ -107,17 +121,6 @@ Once the user is satisfied with their cart, they can proceed to checkout, where 
 Once the order is placed, cart will be empty
 ![placing an order](./public/images/bill.png)
 
-
-### Login/Logout:
-Users can login or register via `/users/login` and `/users/register`. To logout, users can go to `/users/logout`.
-
-![Login Logout](./public/images/cart.png)
-
-### Admin Actions:
-Shop owners can manage their products, view orders, and create new products via the `/owner/products` and `/owner/admin` routes.
-![Admin Login](./public/images/admin_login.png)
-![Admin Login 2](./public/images/admin_outside_dev_env.png)
-Admin can be selected only in dev environment.
 
 
 ## Tech-Stack and Packages
