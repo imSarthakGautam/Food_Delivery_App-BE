@@ -4,7 +4,7 @@ const router= express.Router();
 const ownerModel = require('../models/ownerModel')
 
 router.get('/', (req,res)=>{
-    res.send('hey')
+    res.render('owner-login')
 })
 
 //check the environment
@@ -12,6 +12,9 @@ console.log(process.env.NODE_ENV)
 
 //if route to be run only in development phase then
 if(process.env.NODE_ENV==='development'){
+
+
+
     router.post('/create', async (req,res)=>{
     let owners = await ownerModel.find()
     if (owners.length>0) {
@@ -26,7 +29,7 @@ if(process.env.NODE_ENV==='development'){
          password,
     })
     res.status(201).send(createdOwner)
-    //res.send('you can create a new owner')
+    res.redirect('/admin')
 })
 }
 

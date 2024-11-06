@@ -30,7 +30,8 @@ router.get('/cart', isLoggedIn, async (req, res) => {
     res.render('cart', { cartItems, priceBreakdown });
 });
 
-router.get('cart/bill', isLoggedIn, async (req,res)=>{
+router.get('/cart/bill', isLoggedIn, async (req,res)=>{
+    console.log('inside cart bill')
     let user = await userModel.findOne({ email: req.user.email }).populate('cart');
     let cartItems = user.cart.map(item => ({
         ...item.toObject(),
@@ -68,6 +69,5 @@ router.get('/addtocart/:id', isLoggedIn, async (req,res)=>{
 })
 
 //router
-
 //exporting router object
 module.exports = router;
