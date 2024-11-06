@@ -79,12 +79,14 @@ set DEBUG=
 ```
 It configures the DEBUG environment variable to output logs for the development environment in a specific format. 
 
+Similarly, to Setup development environment in Powershell
+
 ```powershell
 $env:DEBUG='development:*'
 Remove-Item Env:DEBUG
 ```
+6. Install the ejs file after setting up view engine as ejs.
 
-Setup development environment in Powershell
 
 ## Tech-Stack and Packages
 
