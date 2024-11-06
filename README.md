@@ -5,7 +5,8 @@ This is the backend of a food delivery application built using Node.js, Express,
 ## Installation 
 
 To set up the backend for this food delivery app, follow these steps:
-1.Clone the repository:
+
+1. Clone the repository:
 ```bash
 git clone https://github.com/imSarthakGautam/Food_Delivery_App-BE.git
 cd food-delivery-app-backend
