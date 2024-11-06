@@ -1,0 +1,77 @@
+<%- include('./partials/header') %>
+
+<div class="w-full min-h-screen flex flex-col items-center px-10 py-10">
+    <!-- Bill Header -->
+    <h2 class="text-4xl font-semibold mb-6">Order Summary</h2>
+
+    <!-- User Information -->
+    <div class="mb-6 w-full max-w-2xl bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold mb-4">Customer Information</h3>
+        <p class="text-lg"><strong>Name:</strong> <%= user.fullname %></p>
+        <p class="text-lg"><strong>Email:</strong> <%= user.email %></p>
+    </div>
+
+    <!-- Order Details -->
+    <div class="w-full max-w-2xl bg-white p-6 rounded-lg shadow-lg mb-6">
+        <h3 class="text-2xl font-semibold mb-4">Order Details</h3>
+
+        <table class="min-w-full table-auto border-collapse">
+            <thead>
+                <tr class="bg-gray-200">
+                    <th class="px-4 py-2 text-left">Item</th>
+                    <th class="px-4 py-2 text-left">Price</th>
+                    <th class="px-4 py-2 text-left">Discount</th>
+                    <th class="px-4 py-2 text-left">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% cartItems.forEach(function(item) { %>
+                    <tr class="border-b">
+                        <td class="px-4 py-2"><%= item.name %></td>
+                        <td class="px-4 py-2">₹ <%= item.price %></td>
+                        <td class="px-4 py-2 text-red-500">₹ <%= item.discount %></td>
+                        <td class="px-4 py-2">₹ <%= item.price - item.discount %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Price Breakdown -->
+    <div class="w-full max-w-2xl bg-white p-6 rounded-lg shadow-lg mb-6">
+        <h3 class="text-2xl font-semibold mb-4">Price Breakdown</h3>
+
+        <table class="min-w-full table-auto border-collapse">
+            <tbody>
+                <tr class="border-b">
+                    <td class="px-4 py-2">Total MRP</td>
+                    <td class="px-4 py-2 text-right">₹ <%= priceBreakdown.totalMRP %></td>
+                </tr>
+                <tr class="border-b">
+                    <td class="px-4 py-2">Discount on MRP</td>
+                    <td class="px-4 py-2 text-right">₹ <%= priceBreakdown.totalDiscount %></td>
+                </tr>
+                <tr class="border-b">
+                    <td class="px-4 py-2">Platform Fee</td>
+                    <td class="px-4 py-2 text-right">₹ <%= priceBreakdown.platformFee %></td>
+                </tr>
+                <tr class="border-b">
+                    <td class="px-4 py-2">Shipping Fee</td>
+                    <td class="px-4 py-2 text-right">FREE</td>
+                </tr>
+                <tr class="border-b">
+                    <td class="px-4 py-2 font-semibold">Total Amount</td>
+                    <td class="px-4 py-2 text-right font-semibold text-green-600">₹ <%= priceBreakdown.finalAmount %></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bill Actions -->
+    <div class="mt-6 flex justify-between w-full max-w-2xl">
+        <button onclick="window.print()" class="btn text-lg bg-gray-600 text-white py-2 px-4 rounded">Print Bill</button>
+        <a href="/order" class="btn text-lg bg-blue-500 text-white py-2 px-4 rounded">Proceed</a>
+    </div>
+</div>
+
+<%- include('./partials/footer') %>

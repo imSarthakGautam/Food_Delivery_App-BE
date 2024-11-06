@@ -9,6 +9,8 @@ multer
 debug (debugger)
 config
 dotenv
+express-session
+connect-flash
 
 
 - UserModel 

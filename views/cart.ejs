@@ -1,0 +1,82 @@
+<%- include('./partials/header') %>   
+
+<div class="w-full min-h-screen flex flex-wrap px-10 py-10 gap-10">
+    <!-- Cart Items List -->
+    <div class="w-[60%] space-y-6">
+        <h2 class="text-4xl font-semibold mb-4">Your Cart</h2>
+
+        <% cartItems.forEach(function(item) { %>
+            <div class="flex items-center rounded-lg shadow-lg overflow-hidden bg-<%= item.panelColor %>">
+                 
+                <!-- Display Image from Multer with Rectangular Aspect Ratio -->
+                <div class="w-40 h-28 lg:w-48 lg:h-32 flex-shrink-0 overflow-hidden bg-<%= item.bgColor %>">
+                    <img src="data:image/jpeg;base64,<%= item.image.toString('base64') %>" alt="<%= item.name %>" class="w-full h-full object-cover">
+                </div>
+                
+                <!-- Cart Item Details -->
+                <div class="flex-1 px-6 py-4 space-y-2">
+                    <h3 class="text-2xl font-bold text-<%= item.textColor %>"><%= item.name %></h3>
+                    <div class="flex justify-between text-lg">
+                        <p class="text-<%= item.textColor %>">Price: ₹<%= item.price %></p>
+                        <% if (item.discount > 0) { %>
+                            <p class="text-red-500">Discount: ₹<%= item.discount %></p>
+                        <% } %>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <!-- Quantity Controls (Non-Functional) -->
+                        <button class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300">
+                            <i class="ri-subtract-line"></i>
+                        </button>
+                        <div id="quantity-<%= item._id %>" class="w-12 text-center border rounded-md py-1 text-lg">1</div>
+                        <button class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300">
+                            <i class="ri-add-line"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item Total Price -->
+                <div class="w-28 px-4 text-center text-2xl font-semibold">
+                    ₹ <span id="total-<%= item._id %>"><%= item.price - item.discount %></span>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+
+    <!-- Price Breakdown -->
+    <div class="w-[35%] rounded-lg shadow-lg bg-white p-6 space-y-4">
+        <h3 class="text-3xl font-semibold text-gray-700">Price Breakdown</h3>
+
+        <div class="space-y-3">
+            <div class="flex justify-between text-gray-700 text-lg">
+                <span>Total MRP</span>
+                <span>₹ <%= priceBreakdown.totalMRP %></span>
+            </div>
+            <div class="flex justify-between text-gray-700 text-lg">
+                <span>Discount on MRP</span>
+                <span>₹ <%= priceBreakdown.totalDiscount %></span>
+            </div>
+            <div class="flex justify-between text-gray-700 text-lg">
+                <span>Platform Fee</span>
+                <span>₹ <%= priceBreakdown.platformFee %></span>
+            </div>
+            <div class="flex justify-between text-gray-700 text-lg">
+                <span>Shipping Fee</span>
+                <span>FREE</span>
+            </div>
+        </div>
+
+        <hr class="border-t border-gray-300 my-4">
+
+        <!-- Total Amount Calculation -->
+        <div class="flex justify-between text-2xl font-semibold text-green-600 py-4">
+            <span>Total Amount</span>
+            <span>₹ <%= priceBreakdown.finalAmount %></span>
+        </div>
+
+       <!-- Order Button -->
+        <a href="/bill" class="btn mt-auto text-2xl bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded transition-colors duration-300">Place Order</a>
+
+    </div>
+</div>
+
+<%- include('./partials/footer') %>

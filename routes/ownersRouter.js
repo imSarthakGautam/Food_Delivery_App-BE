@@ -30,8 +30,10 @@ if(process.env.NODE_ENV==='development'){
 })
 }
 
-router.get('/create',(req,res)=>{
-    res.send('inside owner create')
+//--------------- /owners/admin
+router.get('/admin',(req,res)=>{
+    let success = req.flash('success')
+    res.render('createproducts.ejs', {success})
 })
 
 module.exports = router
